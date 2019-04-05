@@ -6,9 +6,9 @@
 ### Author: Vanessa
 
 ### Links and Resources
-* [repo]()
-* [travis]()
-* [back-end]()
+* [repo](https://github.com/Wei9023/lab-14/pull/1)
+* [travis](https://git.heroku.com/salty-lowlands-79158.git)
+* [back-end](https://git.heroku.com/salty-lowlands-79158.git)
 
 #### Documentation
 * [jsdoc]()
@@ -57,3 +57,4 @@
   * The additional tests requested in the lab docs
 
 #### UML
+![UML]()
