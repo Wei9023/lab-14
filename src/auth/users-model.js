@@ -16,6 +16,13 @@ const users = new mongoose.Schema({
   password: {type:String, required:true},
   email: {type: String},
   role: {type: String, default:'user', enum: ['admin','editor','user']},
+}, { toObject:{virtuals:true}, toJSON:{virtuals:true}});
+
+users.virtual('roles', {
+  ref: 'roles',
+  localField: 'role',
+  foreignField: 'role',
+  justOne:true,
 });
 
 const capabilities = {
@@ -23,6 +30,15 @@ const capabilities = {
   editor: ['create', 'read', 'update'],
   user: ['read'],
 };
+
+users.pre('find'), function() {
+  try {
+    this.populate('role');
+  }
+  catch(e) {
+    console.error('Find Error', e);
+  }
+}
 
 users.pre('save', function(next) {
   bcrypt.hash(this.password, 10)

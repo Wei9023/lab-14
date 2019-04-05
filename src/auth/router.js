@@ -22,6 +22,7 @@ authRouter.post('/signup', (req, res, next) => {
 
 authRouter.post('/signin', auth(), (req, res, next) => {
   res.cookie('auth', req.token);
+  console.log(req.token);
   res.send(req.token);
 });
 
@@ -37,9 +38,9 @@ authRouter.get('/oauth', (req,res,next) => {
 //   res.status(200).send('Welcome to the hidden-stuff that only can read after log-in');
 // })
 
-authRouter.get('/public-stuff', (req,res,next) => {
-  res.status(200).send('Welcome to the public-stuff that everybody can see it');
-})
+// authRouter.get('/public-stuff', (req,res,next) => {
+//   res.status(200).send('Welcome to the public-stuff that everybody can see it');
+// })
 
 authRouter.post('/key', auth, (req,res,next) => {
   let key = req.user.generateKey();
