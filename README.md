@@ -26,9 +26,27 @@
     * mongo
 * Third tab
     * nodemon
+* Fourth tab
+    * conmand line for http requests
 
-* CLI to get the bearer token
-    * http post :3000/signin "Authorization:Tokenkey eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYTUzMTU4NjUxYzA4NWIzYTRmZjY5ZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTU0MzMwNzMwfQ.Scjq8MUc-jFcHCC8JWlXBW4N7h-XTWuqGQAVpU3fHks"
+* CLI for adding roles
+    echo '{"role":"user", "capabilities":["read"]}' | http :3000/roles
+    echo '{"role":"editor", "capabilities":["create", "read", "update"]}' | http :3000/roles
+    echo '{"role":"admin", "capabilities":["create","read","update","delete"]}' | http :3000/roles
+
+* CLI for signup
+    *  echo '{"username":"yourname","password":"your pass word","role":"user/editor/admin"}' | http post :3000/signup
+* CLI for signin 
+    *  http post :3000/signin -a vv:hello (as user)
+    *  http post :3000/signin -a addie:eddie (as editor)
+* CLI for checking all the routes
+    *  http get :3000/public-stuff -a 
+    *  http get :3000/hidden-stuff -a vv:hello
+    *  http get :3000/something-to-read -a vv:hello
+    *  http post :3000/create-a-thing -a addie:eddie
+    *  http patch :3000/update -a addie:eddie
+    *  http delete :3000/bye-bye -a addie:eddie
+    *  http get :3000/everything -a val:abc 
 
 #### Tests
 * How do you run tests?

@@ -3,10 +3,7 @@
 const express = require('express');
 const roleRouter = express.Router();
 
-const User = require('./users-model.js');
 const auth = require('./middleware.js');
-const userRole = require('./oauth/google.js');
-
 const Role = require('./roles-model.js');
 
 roleRouter.post('/roles', (req,res,next) => {
@@ -45,7 +42,7 @@ roleRouter.get('/hidden-stuff', auth(), (req,res,next) => {
   })
 
   roleRouter.get('/everything', auth('superuser'), (req,res,next) => {
-    res.status(200).send('Welcome to the hidden-stuff that only can read after log-in');
+    res.status(200).send('Welcome as a superuser');
   })
 
 
